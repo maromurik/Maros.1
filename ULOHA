@@ -1,0 +1,95 @@
+#1.uloha
+import math
+
+for i in range (1,11):
+    print(i)
+
+#2.uloha a)
+def cislo(a):
+    for i in range (1,a+1):
+        print(i)
+cislo(5)
+
+#2.uloha b)
+def cislo_2(b):
+    vysledok = ",".join(str(i) for i in range(1, b + 1))
+    print(vysledok)
+cislo_2(5)
+
+#3.uloha
+def cisla(c):
+    for i in range(5,c+1,2):
+        print(i)
+cisla(15)
+#4.uloha
+def mocniny(d):
+    for i in range(1,d+1):
+        print(i,i**2)
+mocniny(9)
+#5.uloha
+def odmocniny(odkial,pokial):
+    for i in range(odkial,pokial+1):
+        odmocnina = round(math.sqrt(i),2)
+        print(i,odmocnina)
+odmocniny(7,30)
+#6.uloha
+def funkcia():
+    for x in range(1, 21):
+        if x == 3:
+            print("funkcia nie je definovaná")
+        else:
+            y = (x**2 - 1) / (x - 3)
+            print(f"x = {x}, y = {y}")
+funkcia()
+#7.uloha
+def del_3(g):
+    for i in range(1,g+1):
+        if i % 3 ==0:
+            print(i)
+del_3(27)
+#8.uloha
+def parne():
+    for i in range(1,21):
+        if i % 2 == 0:
+            print(i)
+parne()
+#9.uloha
+def neparne(z,k):
+    for i in range(z,k+1):
+        if i % 2 == 1:
+            print(i)
+neparne(6,10)
+#10.uloha
+def odzadu(o):
+    vysledok = ",".join(str(i)
+    for i in range(o, 0, -1))
+    print(vysledok)
+odzadu(5)
+#11.uloha
+def del_4alebo7(h):
+    for i in range(0,h+1):
+        if i % 4 == 0:
+            print(i)
+        if i % 7 == 0:
+            print(i)
+del_4alebo7(50)
+#12.uloha
+def sucet(l):
+    spolu = sum(range(1,l+1))
+    return spolu
+print(sucet(5))
+#13.uloha
+def sucet(l):
+    for i in range(1,l+1):
+        spolu = sum(i for i in range(1,l+1)if i % 2 == 0)
+        return spolu
+print(sucet(5))
+#14.uloha
+def del_8(z,k):
+    pocet = sum(1 for i in range(z,k+1) if i % 8 == 0)
+    return pocet
+print(del_8(5,16))
+
+
+
+

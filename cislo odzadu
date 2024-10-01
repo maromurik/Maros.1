@@ -8,3 +8,26 @@ def cif(cislo):
     return cifra
 
 print(cif(4582556545451575175127317513715734751378176173786596745))
+
+
+def binary(number):
+    pow_ten = 1
+    result = 0
+    while number != 0:
+        modulo = number % 2 # zvysok po deleni 2: 0,1
+        result = result+modulo*pow_ten #nasobime desiatimi aby to bolo odzadu
+        number = number // 2 #vytvori dalsie cislo (priprava na dalsi loop)
+        pow_ten *= 10
+    return result
+print(binary(11))
+
+def decimal(number):
+    pow_two = 1
+    result = 0
+    while number != 0:
+        modulo = number % 2 #
+        result = result+modulo*pow_two #
+        number = number // 10 #
+        pow_two *= 2
+    return result
+print(decimal(1011))

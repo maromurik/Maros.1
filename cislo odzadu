@@ -1,0 +1,10 @@
+# toto mi urobi cislo naopak
+def cif(cislo):
+    cifra = 0 # INICIALIZOVALI SME PREMENNU S HODNOTOU NULA
+    while cislo>0:
+        ld = cislo % 10
+        cifra = cifra*10 + ld
+        cislo = cislo // 10
+    return cifra
+
+print(cif(4582556545451575175127317513715734751378176173786596745))

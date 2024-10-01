@@ -25,8 +25,8 @@ def decimal(number):
     pow_two = 1
     result = 0
     while number != 0:
-        modulo = number % 2 #
-        result = result+modulo*pow_two #
+        ld = number % 10 #
+        result = result+ld*pow_two #
         number = number // 10 #
         pow_two *= 2
     return result

@@ -1,0 +1,91 @@
+# def binary(number):
+#     pow_ten = 1
+#     result = 0
+#     while number != 0:
+#         modulo = number % 2 # zvysok po deleni 2: 0,1
+#         result = result+modulo*pow_ten #nasobime desiatimi aby to bolo odzadu
+#         number = number // 2 #vytvori dalsie cislo (priprava na dalsi loop)
+#         pow_ten *= 10
+#     return result
+# print(binary(11))
+from xxsubtype import bench
+
+
+# #def decimal(number):
+#  #   pow_two = 1
+#   #  result = 0
+#    # while number != 0:
+#     #    ld = number % 10 #
+#      #   result = result+ld*pow_two #
+#         number = number // 10 #
+#         pow_two *= 2
+#     return result
+# print(decimal(1011))
+
+
+# def colatz(n):
+#     while n !=1:
+#         if n % 2 == 0:
+#             n = n // 2
+#             print(n, end=",")
+#         else:
+#             n = 3*n + 1
+#             print(n,end=",")
+#     print()
+# for i in range(1,101):
+#     colatz(i)
+# def deli(n):
+#     delitel = 2
+#     while n !=1:
+#         if n % delitel == 0:
+#            n =  n // delitel
+#            print(delitel,end=",")
+#         else:
+#             delitel = delitel+1
+#
+# deli(12)
+# def sucdel(n):
+#     sucet = 0
+#     for i in range(1,n+1):
+#         if n % i == 0:
+#             sucet = sucet+i
+#     return sucet
+#
+#
+# def is_perfect(n):
+#      if sucdel(n) == n*2:
+#         return True
+#      else:
+#         return False
+# for i in range(1,101):
+#     print(is_perfect(i))
+
+def poc_cif(n):
+    poc = 0
+    while n !=0:
+        poc = poc + 1
+        n = n // 10
+    return poc
+
+def shredder(n):
+    if poc_cif(n) % 2 == 0:
+        pozicia = poc_cif(n) // 2
+        sucet = 0
+        poc = 0
+        while n!=0:
+            poc = poc + 1
+            if poc == pozicia or poc == pozicia - 1:
+                sucet = sucet + n % 10
+            n = n // 10
+        return sucet
+    else:
+        pozicia = poc_cif(n) // 2
+        sucet = 0
+        poc = 0
+        while n != 0:
+            poc = poc + 1
+            if poc == pozicia+1:
+                sucet = sucet + n % 10
+            n = n // 10
+        return sucet
+print(shredder(2454678))

@@ -1,0 +1,30 @@
+#REZY
+#fero = "fbuawegbw figznwzáeqwmá,xy.-"
+#a = input("napis mi cislo:")
+#
+# def shredder(ret):
+#     samo = "aeiouy"
+#     for i in samo:
+#         print(f"samohlaska",{i},"sa tam nachadza",ret.count(i))
+#
+# a = input("napis mi slovo:")
+# shredder(a)
+
+string = input('pod')
+def sub(string):
+
+     x = string.find('(')
+     z = string.find(')')
+     if z-x >0:
+         vysledok = string[x+1:z]
+         print(vysledok)
+sub(string)
+
+def vypis(string):
+    while string.find('(')!= -1:
+        sub(string)
+        x = string.find('(')
+        z = string.find(')')
+        string = string[:x:] + string[z+1::]
+
+print(vypis(string))

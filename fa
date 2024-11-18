@@ -20,6 +20,21 @@ def sub(string):
          print(vysledok)
 sub(string)
 
+
+
+
+
+def sub(string):
+    start = string.find("(")
+    vysledok = ""
+    while start !=1:
+        end = string.find(")",start+1)
+        return
+    slovo =  string[start+1:end]
+    vysledok = "hovno(sest)iaif(osem)"
+    print(sub(vysledok))
+sub(string)
+
 def vypis(string):
     while string.find('(')!= -1:
         sub(string)

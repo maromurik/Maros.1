@@ -23,7 +23,7 @@ sub(string)
 
 
 
-
+#ZLEEEEEEEE
 def sub(string):
     start = string.find("(")
     vysledok = ""
@@ -43,3 +43,71 @@ def vypis(string):
         string = string[:x:] + string[z+1::]
 
 print(vypis(string))
+
+
+
+#DOBREEEEEEEEEEE
+def extrahuj_slova_v_zatvorkach(retazec):
+    start = retazec.find('(')
+    vysledok = ""
+
+    while start != -1:
+        end = retazec.find(')', start + 1)
+        if end == -1:
+            print("Nekorektné otváranie zátvoriek.")
+            return
+
+        # Extrahovanie časti medzi zátvorkami
+        slovo = retazec[start + 1:end]
+
+        # Odstránenie medzier na začiatku
+        while slovo and slovo[0] == ' ':
+            slovo = slovo[1:]
+
+        # Odstránenie medzier na konci
+        while slovo and slovo[-1] == ' ':
+            slovo = slovo[:-1]
+
+        if slovo:
+            if vysledok:  # Ak už niečo vo výsledku je, pridáme čiarku
+                vysledok += ", "
+            vysledok += slovo
+
+        start = retazec.find('(', end + 1)
+
+    if vysledok:
+        print("Slová v zátvorkách:", vysledok)
+    else:
+        print("Žiadne slová v zátvorkách neboli nájdené.")
+
+# Test
+retazec = "Toto je (  moja  ) kniha. Alebo ( možno aj ) niečo iné ( naozaj )!"
+extrahuj_slova_v_zatvorkach(retazec)
+
+
+
+def pocet_slov(veta):
+    pocet = 0
+    i = 0
+    dlzka = len(veta)
+
+    while i < dlzka:
+        # Preskočenie medzier
+        while i < dlzka and veta[i] == ' ':
+            i += 1
+
+        # Ak sa našlo slovo, zvýšime počet
+        if i < dlzka and veta[i] != ' ':
+            pocet += 1
+
+        # Posun na koniec aktuálneho slova
+        while i < dlzka and veta[i] != ' ':
+            i += 1
+
+    return pocet
+
+# Test
+veta = "Toto   je   veta   s    viacerými    medzerami."
+print("Počet slov:", pocet_slov(veta))
+
+

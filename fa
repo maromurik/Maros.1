@@ -183,7 +183,14 @@ def uloha_12(retazec):
         print(retazec[:i])
 uloha_12("ahoj")
 
-
+def uloha_13(retazec):
+    samohlasky = "aeiouyAEIOUY"
+    pocet = 0
+    for i in retazec:
+        if i in samohlasky:
+            pocet+=1
+    return pocet
+print(uloha_13("hovHOV"))
 
 
 

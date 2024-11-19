@@ -176,7 +176,12 @@ def uloha_11():
                 for l in retazec:
                     print(i,j,k,l)
 
-
+def uloha_12(retazec):
+    for i in range(1,len(retazec)+1):
+        print(retazec[:i])
+    for i in range(len(retazec) - 1,0,-1):
+        print(retazec[:i])
+uloha_12("ahoj")
 
 
 

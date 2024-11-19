@@ -111,3 +111,77 @@ veta = "Toto   je   veta   s    viacerými    medzerami."
 print("Počet slov:", pocet_slov(veta))
 
 
+
+
+
+def uloha_7(retazec):
+    samohlasky = "aeiouy"
+    novy = ""
+    for i in retazec:
+        if i not in samohlasky:
+            novy = novy+i
+
+    print(novy)
+
+def uloha_8(retazec):
+    opyt = "?"
+    rozk = "!"
+    ozna = "."
+    pocet_op = 0
+    pocet_ro = 0
+    pocet_oz = 0
+    for i in retazec:
+        if i in opyt:
+            pocet_op+=1
+        if i in rozk:
+            pocet_ro+=1
+        if i in ozna:
+            pocet_oz+=1
+
+    print("oznamovacie:",pocet_oz,"opytovacie:",pocet_op,"rozkazovacie",pocet_ro)
+
+
+def uloha_9(retazec):
+    samohlasky = "aeiouy"
+    spoluhlasky = "qwrtzpsdfghjklmnbvcx"
+    pocet_samo = 0
+    pocet_spolu = 0
+    for i in retazec:
+        if i in samohlasky:
+            pocet_samo+=1
+        if i in spoluhlasky:
+            pocet_spolu+=1
+    print("samohlasky:",pocet_samo,"spoluhlasky:",pocet_spolu)
+
+
+
+def uloha_10(retazec):
+    zaciatok = retazec.rfind(".")
+    pripona = retazec[zaciatok+1::]
+    if(pripona == "jpg" or pripona=="jpeg" or pripona=="png"):
+        return "je to obrazok"
+    elif(pripona=="txt" or pripona=="docx" or pripona =="py"):
+        return "je to text"
+    elif(pripona=="xlsx"):
+        return "je to tabulka"
+    else:
+        return "je to nieco ine"
+
+
+def uloha_11():
+    retazec = "0123"
+    for i in retazec:
+        for j in retazec:
+            for k in retazec:
+                for l in retazec:
+                    print(i,j,k,l)
+
+
+
+
+
+
+
+
+
+

@@ -89,3 +89,30 @@ def shredder(n):
             n = n // 10
         return sucet
 print(shredder(2454678))
+
+
+
+def cezar(what:str,offset:int):
+    output = ""
+    for char in what:
+        if (97<=ord(char) and ord(char)<=122):
+            output+= (chr((ord(char)-97+offset)%26+97))#alebo ord("a") namiesto 97
+    return output
+
+
+def desifruj(input:str,offset:int):
+    output = ""
+    for char in input:
+        if (97 <= ord(char) and ord(char) <= 122):
+            output += (chr((ord(char) - 97 + offset) % 26 + 97))
+    return output
+
+
+def funkcia(retazec,kluc):
+    kluc = input("zadaj kluc:")
+    retazec = input("zadaj retazec:")
+    kolko = len(retazec)//len(kluc)
+    zvysok= len(retazec)%len(kluc)
+    return kluc*kolko+kluc[0:zvysok:]
+    ret1 = funkcia(retazec,kluc)
+    print(ret1)

@@ -1,0 +1,12 @@
+fr = open("text.txt","r",encoding="utf-8")
+#niekolko sposobov ako pracovat s obsahom suboru
+for riadok in fr:
+    print(riadok,end="")
+    #print(riadok.strip(),end="./n"
+prvy_riadok = fr.readline()
+print(prvy_riadok)
+for riadok in fr:
+    print(riadok)
+
+zoznam =fr.readlines()
+print(zoznam)

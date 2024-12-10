@@ -10,3 +10,9 @@ for riadok in fr:
 
 zoznam =fr.readlines()
 print(zoznam)
+fr = open("D:/škola/words.txt/","r",encoding = "utf - 8")
+counter = 0
+for riadok in fr:
+   if "E" in riadok:  #alebo if riadok.count("e")>=1
+       counter+=1
+print(counter)

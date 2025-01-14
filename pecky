@@ -1,0 +1,49 @@
+import esp32
+import time
+import machine
+machine.freq(240000000)
+print(esp32.mcu_temperature)
+from machine import Pin, PWM
+LED1=Pin(17,Pin.OUT,value=0)
+LED2pwm=PWM(Pin(16),freq=1000,duty = 0)
+time.sleep(.5)
+
+
+    
+    
+    #while(1):
+     #   time.sleep(f)
+      #  LED1.on()
+       # LED2.off()
+        #time.sleep(f)
+        #LED1.off()
+        #LED2.off()
+        #time.sleep(f)
+        #LED1.off()
+        #LED2.on()
+        #time.sleep(f)
+        #LED1.off()
+        #LED2.off()
+        #if f > 505050:
+         #   break
+
+
+
+
+
+
+
+
+#  ZOSILNENIE 10SEKUNDOVE
+fade_in_duration = 10
+num_steps = 100
+duty_step = 1023//num_steps
+duty_cycle = 0
+start = time.time()
+while time.time() - start < fade_in_duration:
+    LED2pwm.duty(duty_cycle)
+    duty_cycle+= duty_step
+    time.sleep(fade_in_duration/num_steps)
+    
+    
+#LED2pwm.deinit()

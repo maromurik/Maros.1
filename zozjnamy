@@ -1,0 +1,40 @@
+import random
+#prazdny zoznam
+#zoz = []
+#zoz1= list()
+
+#zoz.append(7)#na prvej hodnote bude sedmicka
+#zoz.append(5)
+zoz= []
+parne_pocet = 0
+for i in range(1,11):
+    zoz.append(random.randint(i,100))
+print(zoz)
+for i in zoz:
+    if i % 2 == 0:
+         parne_pocet+=1
+print(parne_pocet)
+maxik= zoz[0]
+for i in range(1,len(zoz)):
+    if i > maxik:
+        i = maxik
+print(maxik)
+#DOMACA ULOHA najdi algoritmus ktory najde v zozname druhe najvacsie cislo
+# najst najvacsie vymazat a najst este raz
+#nacita lubovolne slovo a vytvori zoznam ktory bude obsahovat ordinalne hodnoty jeho znakov
+a = input("zadaj mi vstup:")
+zoz1=[]
+for char in a:
+    zoz1.append(ord(char))
+print(zoz1)
+
+zoz2= []
+vystup=""
+for i in range(1,11):
+    zoz2.append(random.randint(i,100))
+print(zoz2)
+for cislo in zoz2:
+    vystup+=chr(cislo)
+print(vystup)
+
+

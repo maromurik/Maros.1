@@ -1,0 +1,21 @@
+from PIL import Image
+fr = open("ciernobiely_obrazok_1.txt","r",encoding = "utf-8")
+first_line = fr.readline()
+sirka, vyska = first_line.strip().split()
+sirka = int(sirka)
+vyska = int(vyska)
+
+obrazok = Image.new("RGB", (sirka,vyska),(255,255,255))
+pixels = obrazok.load() # vytvori mapu pixelov
+riadky = 0
+y = 0
+for riadok in fr:
+    temp = riadok.strip() # odstrani enter
+    for x in range(0,len(temp),2): #prechadzame riadok po dvoch (x je len index)
+        print(temp[x:x+2])
+        jozo = int(temp[x:x+2],16)
+        pixels[ x//2 ,y ]= (jozo,jozo,jozo)
+    y+=1
+
+
+obrazok.show()

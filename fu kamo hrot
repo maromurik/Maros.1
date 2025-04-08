@@ -19,3 +19,27 @@ for riadok in fr:
 
 
 obrazok.show()
+
+
+
+
+
+
+
+from PIL import Image
+obrazok = Image.new("RGB", (1000,500),(255,255,255))
+pixels = obrazok.load() # vytvori mapu pixelov
+sirka,vyska = obrazok.size
+print(sirka,vyska)
+for y in range(vyska):
+    for x in range(sirka):
+        if (x+y) % 2 == 0:
+            pixels[x,y] = (0,0,0)
+            # SACHOVNICA
+
+
+
+
+
+
+obrazok.show()

@@ -65,3 +65,33 @@ for y in range(vyska):
 
 
 obrazok.show()
+
+
+
+
+from PIL import Image
+obr = Image.open("vlci_mak.jpg")
+sirka,vyska = obr.size
+obr_cerveny = Image.new("RGB",(sirka,vyska),(255,255,255))
+obr_zeleny = Image.new("RGB",(sirka,vyska),(255,255,255))
+obr_modry = Image.new("RGB",(sirka,vyska),(255,255,255))
+pixels = obr.load()
+pixels_cerveny = obr_cerveny.load()
+pixels_zeleny = obr_zeleny.load()
+pixels_modry = obr_modry.load()
+for y in range(vyska):
+    for x in range(sirka):
+        pixels_cerveny[x,y] = (pixels[x,y][0],0,0)
+        pixels_zeleny[x, y] = (0, pixels[x, y][0], 0)
+        pixels_modry[x, y] = (0, 0, pixels[x, y][0])
+
+
+
+
+
+
+obr_cerveny.show()
+obr_modry.show()
+obr_zeleny.show()
+
+#VYROBIM CERVENY ZELENY MODRY OBRAZOK

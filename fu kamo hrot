@@ -43,3 +43,25 @@ for y in range(vyska):
 
 
 obrazok.show()
+
+
+
+
+from PIL import Image
+obrazok = Image.new("RGB", (50,50),(255,255,255))
+pixels = obrazok.load() # vytvori mapu pixelov
+sirka,vyska = obrazok.size
+print(sirka,vyska)
+for y in range(vyska):
+    for x in range(sirka):
+        if x == y:
+            pixels[x,y] = (0,0,255)
+        if (x+y+1) == sirka:
+            pixels[x,y] = (255,0,0)
+#UROBI MI XKO
+
+
+
+
+
+obrazok.show()

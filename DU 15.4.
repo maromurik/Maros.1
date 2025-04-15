@@ -1,0 +1,37 @@
+#8 pixelov = 1znak
+# budeme menít poslednu cifru v binarnom kodovani modrej farby
+# ak cislo parne, v binarnej vzdy konci nulou
+from PIL import Image
+img = Image.open("images.png")
+sirka,vyska = img.size
+pixels = img.load()
+
+
+def kodovacka(sprava):
+    sifrovana = []
+    for i in sprava:
+        bin_znak = bin(ord(i))[2::] # viem pouzit binznak = format(ord(i),"08b") namiesto [2::] a celeho ifu
+        if len(bin_znak)  <8:
+            chyba = 8-len(bin_znak)
+            kompletka = chyba*"0"+bin_znak
+        for j in kompletka:
+            sifrovana.append(int(j))
+    return sifrovana
+sprava = input("Daj mi spravu: ")
+print(kodovacka(sprava))
+
+
+def drticka(sprava):
+    bin_sprava = kodovacka(sprava)
+    
+    # bin_sprava spracovavam v cykle
+    # pre kazdu hodnotu budem musiet vypocitat jej poziciu v pixelmape
+    # z tejto pozicie budem musiet zobrat tu tuplu farieb, niekde si ju zapamatam
+    # zoberes farbu reprezentujucu modru a podla hodnoty v cykle v binarke tejto farby zmenim poslednu cifru
+    # pozor na PETOV HACK "co sa deje s modrou ktora ma hodnotu 255???????"
+    #ked skonci cely cyklus obrazok save ako nove png
+    
+    
+    # 2. cast
+    # dokoncit drticku 
+    # spravu vzdy ukoncim hashtagom aby ked dekodujem dekodujem iba dokym nenajdem hashtag

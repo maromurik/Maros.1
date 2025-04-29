@@ -8,30 +8,66 @@ pixels = img.load()
 
 
 def kodovacka(sprava):
+    global kompletka
     sifrovana = []
     for i in sprava:
         bin_znak = bin(ord(i))[2::] # viem pouzit binznak = format(ord(i),"08b") namiesto [2::] a celeho ifu
         if len(bin_znak)  <8:
             chyba = 8-len(bin_znak)
             kompletka = chyba*"0"+bin_znak
+        else:
+            kompletka = bin_znak
         for j in kompletka:
             sifrovana.append(int(j))
     return sifrovana
-sprava = input("Daj mi spravu: ")
-print(kodovacka(sprava))
+
 
 
 def drticka(sprava):
     bin_sprava = kodovacka(sprava)
-    
-    # bin_sprava spracovavam v cykle
-    # pre kazdu hodnotu budem musiet vypocitat jej poziciu v pixelmape
-    # z tejto pozicie budem musiet zobrat tu tuplu farieb, niekde si ju zapamatam
-    # zoberes farbu reprezentujucu modru a podla hodnoty v cykle v binarke tejto farby zmenim poslednu cifru
-    # pozor na PETOV HACK "co sa deje s modrou ktora ma hodnotu 255???????"
-    #ked skonci cely cyklus obrazok save ako nove png
-    
-    
-    # 2. cast
-    # dokoncit drticku 
-    # spravu vzdy ukoncim hashtagom aby ked dekodujem dekodujem iba dokym nenajdem hashtag
+    for i in range(len(bin_sprava)):
+        x = i % int(sirka)
+        y = i // int(sirka)
+        blue = pixels[x,y][2]
+        binblue = bin(blue)
+        newbinblue= binblue[2:-1:]+str(bin_sprava[i])
+        newblue = int(newbinblue,2) # s binarky spravi desiatkovu
+        pixels[x, y] = (pixels[x,y][0],pixels[x,y][1],newblue)
+    img.save("vystup.png")
+
+
+sprava = input("Daj mi spravu: ")
+print(kodovacka(sprava))
+drticka(sprava)
+
+#####KODOVACKA########
+
+
+
+
+
+from PIL import Image
+
+
+def dekodovacka(menosubor="images.png"):
+    img = Image.open(menosubor)
+    sirka,vyska = img.size
+    pixels = img.load()
+    sprava = ""
+    for y in range(vyska):
+        for x in range(sirka):
+            blue = pixels[x,y][2]
+            binblue = bin(blue)
+            poslednahodnota = binblue[-1]
+            sprava += poslednahodnota
+
+            if len(sprava) == 8:
+                znak = chr(int(sprava,2))
+                if znak == "#":
+                    return
+                sprava = ""
+                print(znak,end="")
+dekodovacka("niko.png")
+
+
+###DEKODOVACKA###

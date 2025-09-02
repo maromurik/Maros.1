@@ -1,3 +1,4 @@
+#2
 fr = open("hada.txt", "r")
 fw = open("vysledok.txt","w")
 counter = 1
@@ -20,3 +21,4 @@ fw.write("\n")
 print(f"najdlhsia hra bola {dlzka_riadka}")
 print(f"najkratsia hra bola {kratky}")
 fw.close()
+#4

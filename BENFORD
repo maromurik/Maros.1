@@ -1,0 +1,29 @@
+#textove subory = txt
+#textove subory+formatovanie =
+#html -> xml (java)  VYUZIVAJU TAGY
+#csv (comma separated value) --> ak dostanem na maturite, otvorim to v exceli
+#json (javascript object notation) -> cez kucerave a hranate zatvorky     (javascript)
+#Pomocou tychto suborov viem popisat data a vymienat data medzi jednotlivymi systemami
+# tieto subory --> DATASETY
+#ZADANIE simulator hry
+#vygeneruje 2 nahodne cisla (100, 1000)
+#jedno umocnis na druhe
+#zisti prvu cifru tohto cisla a nasledne pocitat jej vyskyty a vypisat absolutnu aj relativnu
+import random
+pocetnost = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
+pocet_opakovani = 10000
+for i in range(pocet_opakovani):
+    x = random.randrange(100,1001)
+    y = random.randrange(100,1001)
+    vysledok = x**y
+    cifra = int(str(vysledok)[0])
+    pocetnost[cifra] += 1
+for i in pocetnost:
+    print(round(pocetnost[i]/pocet_opakovani*100,2,), end=",")
+
+#STATISTIKA
+fr = open("paragrafy.csv","r",encoding = "windows-1250")
+for riadok in fr:
+    print(riadok)
+
+

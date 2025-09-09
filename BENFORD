@@ -5,6 +5,9 @@
 #json (javascript object notation) -> cez kucerave a hranate zatvorky     (javascript)
 #Pomocou tychto suborov viem popisat data a vymienat data medzi jednotlivymi systemami
 # tieto subory --> DATASETY
+# MODUL PANDAS JE BOMBA
+
+
 #ZADANIE simulator hry
 #vygeneruje 2 nahodne cisla (100, 1000)
 #jedno umocnis na druhe

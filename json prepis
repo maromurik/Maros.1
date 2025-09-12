@@ -1,0 +1,20 @@
+import json
+def attack_num(power:str)->float:
+    if power  == "super effective":
+        return 2
+    if power == "normal effective":
+        return 1
+    if power == "not very effective":
+        return 0.5
+    else:
+        return 0
+
+fr = open("effectiveness.json","r")
+attack = {}
+data = json.load(fr)
+for effectivness in data:
+    for attacker in data[effectivness]:
+        attack[attacker] = {}
+        for defender in data[effectivness][attacker]:
+            attack[attacker][defender] = attack_num(effectivness)
+

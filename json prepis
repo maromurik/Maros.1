@@ -14,7 +14,8 @@ attack = {}
 data = json.load(fr)
 for effectivness in data:
     for attacker in data[effectivness]:
-        attack[attacker] = {}
+        if attacker not in attack.keys():
+            attack[attacker] = {}
         for defender in data[effectivness][attacker]:
             attack[attacker][defender] = attack_num(effectivness)
 

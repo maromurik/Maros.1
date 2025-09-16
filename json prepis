@@ -10,12 +10,40 @@ def attack_num(power:str)->float:
         return 0
 
 fr = open("effectiveness.json","r")
-attack = {}
+att = {}
 data = json.load(fr)
 for effectivness in data:
     for attacker in data[effectivness]:
-        if attacker not in attack.keys():
-            attack[attacker] = {}
+        if attacker not in att.keys():
+            att[attacker] = {}
         for defender in data[effectivness][attacker]:
-            attack[attacker][defender] = attack_num(effectivness)
+            att[attacker][defender] = attack_num(effectivness)
 
+print(att["Fire"]["Water"])
+def attack(N1,N2,listpok):
+    utocnici = []
+    obrancovia = []
+    rozdelene = listpok.split(",")
+    utocnici.append([rozdelene[i] for i in range(N1)])
+    obrancovia.append([rozdelene[i] for i in range(N1,N2+N1)])
+    return utocnici
+print(attack(2,6,"Psychic Dark,Fire,Ghost Ice,Fairy Electric,Normal Steel,Ghost,Poison Fire,Dark Bug"))
+
+def poktopok(ataker,defen):
+    if " " in ataker:
+        ataker = ataker.split(" ")
+        if " " in defen:
+            defen = defen.split(" ")
+            return max(att[ataker[0]][defen[0]]*att[ataker[0]][defen[1]],att[ataker[1]][defen[0]]*att[ataker[1]][defen[1]])
+        else:
+            #UTOCNIK DVOJZLOZKOVY A OBRANA JEDNOZLOZ
+            return max(att[ataker[0]][defen],att[ataker[1]][defen])
+    elif " " in defen:
+        # UTOCNIK JEDNOZLOZ OBRANCA DVOJ
+        return (att[ataker][defen[0]]*att[ataker][defen[1]])
+    else:
+        #JEDNOZLOZKOVI OBAJA
+        return (att[ataker][defen])
+
+
+print(poktopok("Psychic Dark","Fairy Electric"))

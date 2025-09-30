@@ -1,0 +1,50 @@
+from PIL import Image, ImageDraw
+#program ktory najde vsetky rozlozenia 8dam na sachovnici tak, aby sa navzajom neohrozovali
+# bonus: program na kazde riesenie(92) vygeneruje jpg
+size = 8
+sachovnica = [[0]*size for i in range(size)]
+velkost_pola_v_pixeloch = 20
+# AK CHCEM PRIRADIT X= 3 Y = 4 TAK JE TO NAOPAK ((Y,X))
+for riadok in sachovnica:
+    print(riadok)
+def check(x,y):                 #True ak mozem postavit damu, false ak nie
+    for i in range(size):
+        if sachovnica[y][i] == 1 or sachovnica[i][x] == 1:
+            return False
+        for i in range(size): #y suradnica
+            for j in range(size): #x suradnica
+                if i+j == x+y:
+                    if sachovnica[i][j] == 1:
+                        return False
+                if i-j == y-x:
+                    if sachovnica[i][j] == 1:
+                        return False
+    return True
+
+def create_chessboard():
+    #vytvor obrazok, kde bude schovnica = striedanie biele/cierne policka
+    # prechadzaj nasu sachovnicu a kde je 1 tam daj kruzok cerveny do obrazku
+    # savni obrazok do subfoldra/ adresara stavy
+    obrazok = Image.new("RGB",(size*velkost_pola_v_pixeloch,size*velkost_pola_v_pixeloch),"white")
+    platno = ImageDraw.Draw(obrazok)
+    for y in range(size):
+        for x in range(size):
+            if (x+y) % 2 == 1:
+                platno.rectangle((x*xy,y*20,(x+1)*20,(y+1)*20),"black")
+
+
+
+def rekurzivna_drticka(n):
+    global sachovnica
+    if n == size:
+        print(sachovnica)
+        print("_--------------------------------------------------------------------")
+    else:
+        for x in range(size):
+            if check(x,n):
+                sachovnica[n][x] = 1
+                rekurzivna_drticka(n+1)
+                sachovnica[n][x] = 0
+
+
+rekurzivna_drticka(0)

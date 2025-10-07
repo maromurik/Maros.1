@@ -1,0 +1,20 @@
+#SIERPINSKEHO TROJUHOLNIK
+import tkinter as tk
+obrazok = tk.Tk()
+canvas = tk.Canvas(obrazok,width=1500,height=800,bg= "white")
+canvas.pack()
+
+
+def troj(x,y,d):
+    canvas.create_polygon(x,y,x+d,y,x+(d/2),y-((3**0.5)*d/2),fill="white",outline="black")
+    if d > 2:
+        troj(x, y, (d / 2))
+        troj(x + (d / 2), y, (d / 2))
+        troj(x+(d/4),y-(3**0.5)*d/4,(d/2))
+
+
+troj(0,800,800)
+
+
+
+obrazok.mainloop()

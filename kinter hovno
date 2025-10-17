@@ -40,5 +40,5 @@ def stop(event):
 canvas.bind("<Button-1>",click_func)
 canvas.bind("<B1-Motion>",moving)
 canvas.bind("<ButtonRelease-1>",stop)
-
+root.mainloop()
 

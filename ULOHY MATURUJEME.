@@ -230,4 +230,6 @@ def click(event):
 
 
 canvas.bind("<Button-1>",click)
+TREBA DOKONCIT TIMER
+root.mainloop()
 

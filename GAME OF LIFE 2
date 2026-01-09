@@ -1,0 +1,50 @@
+import random
+kmen = []
+class Priserka:
+    def __init__(self,gen = 0):
+        self.dna = []
+        self.gen = gen
+        if gen ==0:
+            for i in range(10):
+                self.dna.append(random.randrange(0,10))
+        self.stamina = self.dna.count(5)   #NASE PRAVIDLO
+    def __str__(self):
+        return str(self.dna)
+    def __add__(self, other):
+        baby = Priserka(self.gen + 1)
+        for i in range(len(self.dna)):
+            temp = random.random()
+            if temp <0.9:
+                temp2 = random.random()
+                baby.dna.append(random.choice([self.dna[i],other.dna[i]]))
+            else:
+                baby.dna.append(random.randrange(0,10))
+            baby.stamina = baby.dna.count(5)
+        return baby
+
+
+for i in range(10):
+    kmen.append(Priserka())
+
+for i in range(1001):
+    print(f"______GEN {i}______")
+    #usporiadanie
+    kmen.sort(key = lambda priserka: priserka.stamina, reverse=True)
+    for priserka in kmen:
+        print(priserka)
+    print("-----------------------------------")
+    #spodna polovica prec
+    del kmen[5:]
+    #for priserka in kmen:
+        #print(priserka)
+
+    #print("---------------------------")
+    #polovicny krat vyberem dve nahodne priserky a produkt ich lasky priradim do kmen
+    for i in range(5):
+        matka = random.choice(kmen)
+        tatko = random.choice(kmen)
+        novy = matka+tatko
+        kmen.append(novy)
+
+    #for priserka in kmen:
+        #print(priserka)

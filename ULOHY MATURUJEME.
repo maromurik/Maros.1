@@ -205,6 +205,55 @@ with open("poprehadzovany_text1_vstup.txt", "r", encoding="cp1250") as fr:
 
 with open("hotovo.txt", "w", encoding="cp1250") as fw:
     fw.write("\n".join(nove_riadky))
+#25
+import random
+counter = 0
+counter2= 0
+counter3 = 0
+vyherne = []
+jedno = 0
+dve = 0
+tri = 0
+styri = 0
+pat = 0
+sest = 0
+moje = input().strip().split()
+print(moje)
+moje_zoz = []
+for i in range(6):
+    vyherne.append(random.randrange(0,100))
+print(f"Vyherne cisla: {vyherne}")
+
+fr  = open("loteria_1.txt","r",encoding = "utf-8")
+for i in fr:
+    cisla = i.split()
+    counter+=1
+    for x in range(len(cisla)):
+        cisla[x] = int(cisla[x])
+        moje[x] = int(moje[x])
+    print(cisla)
+for y in range(6):
+    if moje[y] in vyherne:
+        counter3+=1
+        moje_zoz.append(moje[y])
+        if cisla[y] in vyherne:
+            counter2+=1
+    if counter2 == 1:
+        jedno+=1
+    elif counter2 == 2:
+        dve+=1
+    elif counter2 == 3:
+        tri+=1
+    elif counter2 == 4:
+        styri+=1
+    elif counter2 == 5:
+        pat+=1
+    elif counter2 == 6:
+        sest+=1
+    counter2 = 0
+print(f"Jedno cislo trafili: {jedno},Dve: {dve},Tri: {tri},Styri: {styri},Pat: {pat},Sest: {sest}")
+print(f"Pocet ludi: {counter}")
+print(f"Pocet tvojich trafenych: {counter3}, Trafene: {moje_zoz}")
 
 #42
 import random

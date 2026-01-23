@@ -5,21 +5,92 @@ canvas = tk.Canvas(root,width=1000,height=700,background="white")
 fr = open("vrcholy.txt","r",encoding="utf-8")
 fr2 = open("hrany.txt","r",encoding="utf-8")
 mesta = dict()
+mesta_id = {}
+mesta_cesty = dict()
+x = None
+y = None
+moj_objekt = None
+
+
+
 def spracuj_vrcholy(fr,mesta):
     for riadok in fr:
         riadok = riadok.strip().split(";")
         x = int(riadok[1])
         y =  int(riadok[2])
         mesta[riadok[0]] = (int(riadok[1]),int(riadok[2]))
-        canvas.create_oval(x-2,y-2,x+2,y+2,fill="black")
+        temp = canvas.create_oval(x-2,y-2,x+2,y+2,fill="black")
         canvas.create_text(x - 2, y + 5, text = riadok[0])
+        mesto_id = riadok[0]
+        mesta_id[mesto_id] = temp
+
+def spracuj_mesta_cesty(mesto1,mesto2,cesta):
+    global mesta_cesty
+    mesto1_id = mesta_id[mesto1]
+    mesto2_id = mesta_id[mesto2]
+    if mesto1_id in mesta_cesty:
+        mesta_cesty[mesto1_id].append(cesta)
+    else:
+        mesta_cesty[mesto1_id] = [cesta]
+
+    if mesto2_id in mesta_cesty:
+        mesta_cesty[mesto2_id].append(cesta)
+    else:
+        mesta_cesty[mesto2_id] = [cesta]
 
 def kresli_cesty(fr):
     for riadok in fr:
         mesto1,mesto2= riadok.strip().split(";")
-        canvas.create_line(mesta[mesto1][0],mesta[mesto1][1],mesta[mesto2][0],mesta[mesto2][1],width=1)
+        temp = canvas.create_line(mesta[mesto1][0],mesta[mesto1][1],mesta[mesto2][0],mesta[mesto2][1],width=1)
+        spracuj_mesta_cesty(mesto1,mesto2,temp)
+
+def ziskaj_mesto(event):
+    global x,y, moj_objekt
+    items = canvas.find_overlapping(event.x-2,event.y-2,event.x+2,event.y+2)
+    if len(items) > 0:
+        mesto = min(items)
+        if mesto in mesta_id.values():
+            x = event.x
+            y = event.y
+            moj_objekt = mesto
+
+
+def posuvaj(event):
+    global x,y
+    if x is not None:
+        offsetx = event.x-x
+        offsety = event.y-y
+
+        print(mesta_cesty[moj_objekt])
+        for cesta in mesta_cesty[moj_objekt]:
+            print(canvas.coords(cesta))
+        # zisti ktore zo suradnic ideme posuvat ci prve dve alebo posledne dve a posunte ich
+        canvas.move(moj_objekt, offsetx, offsety)
+        canvas.move(moj_objekt + 1, offsetx, offsety)
+        x = event.x
+        y = event.y
+def cisti(event):
+    global moj_objekt,x,y
+    moj_objekt = None
+    x = None
+    y = None
+
+
+
+
 
 spracuj_vrcholy(fr,mesta)
 kresli_cesty(fr2)
+print(mesta_id)
+print(mesta_cesty)
+canvas.bind("<Button-1>",ziskaj_mesto)
+canvas.bind("<B1-Motion>",posuvaj)
+canvas.bind("<ButtonRelease-1>",cisti)
+
+
+
+
 canvas.pack()
+
+
 root.mainloop()
